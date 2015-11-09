@@ -24,7 +24,7 @@ var mesh = function(dir, folderName, callback){
 	childProcess.spawn = mySpawn;
 	var spawn = childProcess.spawn;
 	//spawn
-	var ls = cp.spawn('mesh/mesh.exe'/*command*/, [startDir, endDir, '/public/tmp/' + folderName + '/gif', '5']/*args*/, {}/*options, [optional]*/);
+	var ls = spawn('mesh/mesh.exe'/*command*/, [startDir, endDir, '/public/tmp/' + folderName + '/gif', '5']/*args*/, {}/*options, [optional]*/);
 	ls.stdout.on('data', function (data) {
 		console.log('stdout: ' + data);
 	});
