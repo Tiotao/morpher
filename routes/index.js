@@ -10,13 +10,21 @@ var mesh = function(dir, folderName, callback){
 	var startDir = dir + 'start.png';
 	var endDir = dir + 'end.png';
 	fs.ensureDirSync(dir + 'gif')
-	console.log("mesh() start");
-	console.log('mesh/mesh.exe ' + startDir + ' ' + endDir)
+	// console.log("mesh() start");
+	// console.log('mesh/mesh.exe ' + startDir + ' ' + endDir)
 	// exec('mesh/mesh.exe ' + startDir + ' ' + endDir + ' ' + 'gif', callback);  
 
-	var cp = require('child_process');
+	var childProcess = require('child_process');
+	oldSpawn = childProcess.spawn;
+	function mySpawn() {
+		console.log("spawn called");
+		var result = oldSpawn.apply(this, arguments);
+		return result
+	}
+	childProcess.spawn = mySpawn;
+	var spawn = childProcess.spawn;
 	//spawn
-	var ls = cp.spawn('mesh/mesh.exe'/*command*/, ['public/tmp/start.png', 'public/tmp/end.png', 'public/tmp/' + folderName + '/gif', '5']/*args*/, {}/*options, [optional]*/);
+	var ls = cp.spawn('mesh/mesh.exe'/*command*/, [startDir, endDir, '/public/tmp/' + folderName + '/gif', '5']/*args*/, {}/*options, [optional]*/);
 	ls.stdout.on('data', function (data) {
 		console.log('stdout: ' + data);
 	});
