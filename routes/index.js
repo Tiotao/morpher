@@ -16,7 +16,7 @@ var mesh = function(dir, folderName, callback){
 
 	var cp = require('child_process');
 	//spawn
-	var ls = cp.spawn('mesh/mesh.exe'/*command*/, [startDir, endDir, '/public/tmp/' + folderName + '/gif', '5']/*args*/, {}/*options, [optional]*/);
+	var ls = cp.spawn('mesh/mesh.exe'/*command*/, ['public/tmp/start.png', 'public/tmp/end.png', 'public/tmp/' + folderName + '/gif', '5']/*args*/, {}/*options, [optional]*/);
 	ls.stdout.on('data', function (data) {
 		console.log('stdout: ' + data);
 	});
