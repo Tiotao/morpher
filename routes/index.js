@@ -36,7 +36,7 @@ var ScreenshotService = function(){
 
 ScreenshotService.prototype.startService = function(startDir, endDir, folderName, callback){
 	console.log('start')
-	var screenshot = spawn('mesh/mesh.exe'/*command*/, [startDir, endDir, '/public/tmp/' + folderName + '/gif', '5']/*args*/, {}/*options, [optional]*/);
+	var screenshot = spawn('mesh.exe'/*command*/, [startDir, endDir, '/public/tmp/' + folderName + '/gif', '5']/*args*/, {}/*options, [optional]*/);
 	// var screenshot = spawn('phantomjs', ['--version']);
 	screenshot.stderr.on('data', function (data) {
 		console.log('phantomjs error: ' + data);
