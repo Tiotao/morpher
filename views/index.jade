@@ -1,0 +1,44 @@
+extends layout
+
+block content
+	.container-fluid
+		.row#image-row
+			.col-md-12.col-lg-6.text-center
+				#start-image
+					h2 Start
+					div.input-container(ng-show='startImageCropStep == 1')
+						br
+						input#startFileInput(type='file', name='startFileInput', onchange='angular.element(this).scope().fileChangedStart(event)')
+					div.crop-image-container(ng-show='startImageCropStep == 2')
+						image-crop(data-height='444', data-width='444', data-shape='circle', data-step='startImageCropStep', src='startImgSrc', data-result='startResult', data-result-blob='startResultBlob', crop='startInitCrop')
+					div.button-container(ng-show='startImageCropStep == 2')
+						button.btn.btn-primary.raised(ng-click='clearStart()') Cancel
+						button.btn.btn-warning.raised(ng-click='startInitCrop = true') Crop
+					div.preview-container(ng-show='startImageCropStep == 3')
+						img.preview-img(ng-src='{{startResult}}')
+						br
+					div.button-container(ng-show='startImageCropStep == 3')
+						button.btn.btn-warning.raised(ng-click='clearStart()') Clear
+			.col-md-12.col-lg-6.text-center
+				#end-image
+					h2 End
+					div.input-container(ng-show='endImageCropStep == 1')
+						br
+						input#endFileInput(type='file', name='endFileInput', onchange='angular.element(this).scope().fileChangedEnd(event)')
+					div.crop-image-container(ng-show='endImageCropStep == 2')
+						image-crop(data-height='444', data-width='444', data-shape='circle', data-step='endImageCropStep', src='endImgSrc', data-result='endResult', data-result-blob='endResultBlob', crop='endInitCrop')
+					div.button-container(ng-show='endImageCropStep == 2')
+						button.btn.btn-warning.raised(ng-click='clearEnd()') Cancel
+						button.btn.btn-primary.raised(ng-click='endInitCrop = true') Crop	
+					div.preview-container(ng-show='endImageCropStep == 3')
+						img.preview-img(ng-src='{{endResult}}')
+						br
+					div.button-container(ng-show='endImageCropStep == 3')
+						button.btn.btn-warning.raised(ng-click='clearEnd()') Clear
+	
+		.row
+			.col-md-12.text-center
+				button.btn.btn-primary.btn-lg.raised(ng-disabled='endImageCropStep !=3 || startImageCropStep!=3 || isGenerating', ng-click='createMorph()') Create
+		.row
+			.col-md-12.text-center
+				#show-morph

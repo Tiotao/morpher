@@ -1,0 +1,19 @@
+doctype html
+html(ng-app="morpher")
+	head
+		title= title
+		
+		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+		link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto:400,300,700")
+		link(rel="stylesheet", href="/bower_components/angular-image-crop/image-crop-styles.css")
+		script(src="//code.jquery.com/jquery-1.11.3.min.js")
+		script(type="text/javascript", src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js')
+		script(src='/javascripts/gifshot.js')
+		script(src="/javascripts/controller.js")
+		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
+		script(src="http://underscorejs.org/underscore-min.js")
+		script(src="/bower_components/angular-image-crop/image-crop.js")
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		#morpherCtrl(ng-controller="morpherCtrl")
+			block content
