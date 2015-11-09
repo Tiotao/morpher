@@ -10,8 +10,8 @@ var mesh = function(dir, folderName, callback){
 	var startDir = dir + 'start.png';
 	var endDir = dir + 'end.png';
 	fs.ensureDirSync(dir + 'gif')
-	// console.log("mesh() start");
-	// console.log('mesh/mesh.exe ' + startDir + ' ' + endDir)
+	console.log("mesh() start");
+	console.log('mesh/mesh.exe ' + startDir + ' ' + endDir)
 	// exec('mesh/mesh.exe ' + startDir + ' ' + endDir + ' ' + 'gif', callback);  
 
 	var cp = require('child_process');
