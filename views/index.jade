@@ -1,44 +1,56 @@
 extends layout
 
 block content
-	.container-fluid
+	.container
+		.row#title-row
+			.col-md-12.text-center
+				h3.site-header Face Morpher
+	.container-fluid#image-wrapper
 		.row#image-row
-			.col-md-12.col-lg-6.text-center
-				#start-image
-					h2 Start
+			.col-md-6.col-lg-6.text-center
+				.card#start-image
 					div.input-container(ng-show='startImageCropStep == 1')
 						br
-						input#startFileInput(type='file', name='startFileInput', onchange='angular.element(this).scope().fileChangedStart(event)')
+						input.photo-input#startFileInput(type='file', name='startFileInput', onchange='angular.element(this).scope().fileChangedStart(event)')
 					div.crop-image-container(ng-show='startImageCropStep == 2')
-						image-crop(data-height='444', data-width='444', data-shape='circle', data-step='startImageCropStep', src='startImgSrc', data-result='startResult', data-result-blob='startResultBlob', crop='startInitCrop')
+						image-crop(data-height='444', data-width='444', data-shape='square', data-padding='0', data-step='startImageCropStep', src='startImgSrc', data-result='startResult', data-result-blob='startResultBlob', crop='startInitCrop')
 					div.button-container(ng-show='startImageCropStep == 2')
-						button.btn.btn-primary.raised(ng-click='clearStart()') Cancel
-						button.btn.btn-warning.raised(ng-click='startInitCrop = true') Crop
+						button.btn.btn-warning.raised(ng-click='clearStart()')
+							i.fa.fa-trash-o.fa-4x
+						button.btn.btn-primary.raised(ng-click='startInitCrop = true')
+							i.fa.fa-crop.fa-4x
 					div.preview-container(ng-show='startImageCropStep == 3')
 						img.preview-img(ng-src='{{startResult}}')
 						br
 					div.button-container(ng-show='startImageCropStep == 3')
-						button.btn.btn-warning.raised(ng-click='clearStart()') Clear
-			.col-md-12.col-lg-6.text-center
-				#end-image
-					h2 End
+						button.btn.btn-warning.raised(ng-click='clearStart()')
+							i.fa.fa-trash-o.fa-4x
+			.col-md-6.col-lg-6.text-center
+				.card#end-image
 					div.input-container(ng-show='endImageCropStep == 1')
 						br
-						input#endFileInput(type='file', name='endFileInput', onchange='angular.element(this).scope().fileChangedEnd(event)')
+						input.photo-input#endFileInput(type='file', name='endFileInput', onchange='angular.element(this).scope().fileChangedEnd(event)')
 					div.crop-image-container(ng-show='endImageCropStep == 2')
-						image-crop(data-height='444', data-width='444', data-shape='circle', data-step='endImageCropStep', src='endImgSrc', data-result='endResult', data-result-blob='endResultBlob', crop='endInitCrop')
+						image-crop(data-height='444', data-width='444',data-shape='square', data-padding='0', data-step='endImageCropStep', src='endImgSrc', data-result='endResult', data-result-blob='endResultBlob', crop='endInitCrop')
 					div.button-container(ng-show='endImageCropStep == 2')
-						button.btn.btn-warning.raised(ng-click='clearEnd()') Cancel
-						button.btn.btn-primary.raised(ng-click='endInitCrop = true') Crop	
+						button.btn.btn-warning.raised(ng-click='clearEnd()')
+							i.fa.fa-trash-o.fa-4x
+						button.btn.btn-primary.raised(ng-click='endInitCrop = true')
+							i.fa.fa-crop.fa-4x
 					div.preview-container(ng-show='endImageCropStep == 3')
 						img.preview-img(ng-src='{{endResult}}')
 						br
 					div.button-container(ng-show='endImageCropStep == 3')
-						button.btn.btn-warning.raised(ng-click='clearEnd()') Clear
+						button.btn.btn-warning.raised(ng-click='clearEnd()')
+							i.fa.fa-trash-o.fa-4x
 	
 		.row
 			.col-md-12.text-center
-				button.btn.btn-primary.btn-lg.raised(ng-disabled='endImageCropStep !=3 || startImageCropStep!=3 || isGenerating', ng-click='createMorph()') Create
-		.row
-			.col-md-12.text-center
-				#show-morph
+				button#create-btn.btn.btn-primary.btn-lg.raised(ng-disabled='isDisable()', ng-click='createMorph()') CREATE
+				button#clear-btn.btn.btn-primary.btn-lg.raised(ng-disabled='', ng-click='clearAll()') CLEAR
+		.row#result-row
+			.col-md-12.text-center#result-col
+				.card
+					div.preview-container
+						#show-morph
+

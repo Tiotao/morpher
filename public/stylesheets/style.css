@@ -1,6 +1,6 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Roboto", "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #f3f3f3;
 }
 a {
   color: #00b7ff;
@@ -23,203 +23,171 @@ hr {
   display: block;
   margin: 20px auto;
 }
+.card {
+  height: 570px;
+  width: 444px;
+  margin: auto;
+  background: #fff;
+  box-shadow: 1px 1px 5px 2px #ddd;
+  padding-top: 20px;
+  padding-bottom: 0px;
+}
 #startFileInput,
 #endFileInput {
   margin: auto;
+  position: relative;
+  width: 444px;
 }
 #start-img,
 #end-img {
   padding-bottom: 20px;
 }
-.preview-container,
-.crop-image-container,
-.input-container {
-  height: 650px;
-}
 #image-row {
-  height: 800px;
+  margin-top: 2em;
+  margin-bottom: 4em;
+  background: url("http://img3.wikia.nocookie.net/__cb20141216054306/crusader-quest-th/images/d/d8/Left-arrow-right-hi.png") no-repeat;
+  background-size: 50px;
+  background-position: center;
+}
+.input-container {
+  height: 444px;
+  width: 444px;
+  background: #f3f3f3;
+  margin: auto;
+}
+.button-container {
+  height: 100px;
+  line-height: 100px;
+  text-align: right;
+  padding-right: 15px;
+}
+.button-container button {
+  width: 80px;
+  height: 80px;
+  line-height: 40px;
+  border: none;
+  border-radius: 0px;
+  background-color: #fff;
+  color: #ddd;
+  box-shadow: none;
+}
+.button-container button:hover,
+.button-container button:focus,
+.button-container button:active {
+  box-shadow: none;
+  border-color: none;
+  background-color: #fff !important;
+}
+.button-container button:hover.btn-warning,
+.button-container button:focus.btn-warning,
+.button-container button:active.btn-warning {
+  color: #d9534f;
+}
+.button-container button:hover.btn-primary,
+.button-container button:focus.btn-primary,
+.button-container button:active.btn-primary {
+  color: #337ab7;
+}
+.button-container button:nth-child(2) {
+  margin-left: 20px;
 }
 #show-morph {
-  margin: 100px;
-  height: 400px;
-  width: 400px;
+  height: 444px;
+  width: 444px;
   overflow: hidden;
 }
-.preview-img {
-  padding: 100px;
+#show-morph img {
+  height: 448px;
+  width: 448px;
 }
-.true-center {
+#result-row {
+  z-index: -1;
+  opacity: 0;
   position: absolute;
   top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  height: 106px;
-  width: 680px;
+  left: 50%;
 }
-.btn {
+#result-row #result-col {
+  left: -47%;
+}
+.preview-container {
+  height: 444px;
+  width: 444px;
+  background: #f3f3f3;
+}
+#morpherCtrl {
+  padding: 0px;
+}
+#show-morph {
   position: relative;
-  border: 0 !important;
+  line-height: 444px;
+}
+#show-morph i {
+  color: #ddd;
+}
+#show-morph img {
+  opacity: 0;
+  top: 0;
+  position: absolute;
+  left: 0;
+}
+#clear-btn {
+  font-size: 40px;
+  border-radius: 5px;
+  border: 3px solid;
+  margin: 20px;
+  width: 200px;
+  border-color: #d9534f;
+  background: none;
+  color: #d9534f;
+  font-weight: 700;
+}
+#create-btn {
+  font-size: 40px;
+  border-radius: 5px;
+  border: 3px solid;
+  margin: 20px;
+  width: 200px;
+  border-color: #337ab7;
+  background: none;
+  color: #337ab7;
+  font-weight: 700;
+}
+#create-btn[disabled] {
+  border-color: #ddd;
+  color: #ddd;
+}
+#title-row h3.site-header {
+  font-size: 50px;
+  margin-top: 50px;
+  margin-bottom: 40px;
+  font-weight: 800;
+  color: #bbb;
+}
+#image-wrapper {
+  position: relative;
+}
+.photo-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.photo-input::before {
+  content: "UPLOAD";
+  -webkit-user-select: none;
   cursor: pointer;
-  -webkit-font-smoothing: antialiased;
-  font-weight: bold !important;
-  -webkit-border-radius: 10px;
-  -webkit-background-clip: padding-box;
-  -moz-border-radius: 10px;
-  -moz-background-clip: padding;
-  border-radius: 10px;
-  background-clip: padding-box;
-  -webkit-transition: all 50ms ease;
-  -moz-transition: all 50ms ease;
-  -o-transition: all 50ms ease;
-  transition: all 50ms ease;
-  border: 0;
-  text-shadow: 0px 1px 0px #999;
-  background-color: #ccc;
-  -webkit-box-shadow: 0px 6px 0px #999;
-  -moz-box-shadow: 0px 6px 0px #999;
-  box-shadow: 0px 6px 0px #999;
+/* text-shadow: 1px 1px #fff; */
+  font-weight: 700;
+  line-height: 444px;
+  font-size: 30px;
+  text-aling: center;
+  width: 444px;
+  height: 444px;
+  text-align: center;
+  background: #f3f3f3;
+  top: -18px;
+  position: absolute;
+/* margin: 0; */
+  color: #bbb;
 }
-.btn:focus {
-  outline: 0;
-}
-.btn:hover {
-  top: 2px;
-}
-.btn:active {
-  top: 6px;
-}
-.btn:hover {
-  border: 0;
-  background-color: #d9d9d9 !important;
-  -webkit-box-shadow: 0px 4px 0px #999;
-  -moz-box-shadow: 0px 4px 0px #999;
-  box-shadow: 0px 4px 0px #999;
-}
-.btn:active {
-  -webkit-box-shadow: inset 0px 3px 0px #999;
-  -moz-box-shadow: inset 0px 3px 0px #999;
-  box-shadow: inset 0px 3px 0px #999;
-}
-.btn-primary {
-  border: 0;
-  text-shadow: 0px 1px 0px #3071a9;
-  background-color: #428bca;
-  -webkit-box-shadow: 0px 6px 0px #3071a9;
-  -moz-box-shadow: 0px 6px 0px #3071a9;
-  box-shadow: 0px 6px 0px #3071a9;
-}
-.btn-primary:hover {
-  border: 0;
-  background-color: #5697d0 !important;
-  -webkit-box-shadow: 0px 4px 0px #3071a9;
-  -moz-box-shadow: 0px 4px 0px #3071a9;
-  box-shadow: 0px 4px 0px #3071a9;
-}
-.btn-primary:active {
-  -webkit-box-shadow: inset 0px 3px 0px #3071a9;
-  -moz-box-shadow: inset 0px 3px 0px #3071a9;
-  box-shadow: inset 0px 3px 0px #3071a9;
-}
-.btn-success {
-  border: 0;
-  text-shadow: 0px 1px 0px #449d44;
-  background-color: #5cb85c;
-  -webkit-box-shadow: 0px 6px 0px #449d44;
-  -moz-box-shadow: 0px 6px 0px #449d44;
-  box-shadow: 0px 6px 0px #449d44;
-}
-.btn-success:hover {
-  border: 0;
-  background-color: #6ec06e !important;
-  -webkit-box-shadow: 0px 4px 0px #449d44;
-  -moz-box-shadow: 0px 4px 0px #449d44;
-  box-shadow: 0px 4px 0px #449d44;
-}
-.btn-success:active {
-  -webkit-box-shadow: inset 0px 3px 0px #449d44;
-  -moz-box-shadow: inset 0px 3px 0px #449d44;
-  box-shadow: inset 0px 3px 0px #449d44;
-}
-.btn-info {
-  border: 0;
-  text-shadow: 0px 1px 0px #31b0d5;
-  background-color: #5bc0de;
-  -webkit-box-shadow: 0px 6px 0px #31b0d5;
-  -moz-box-shadow: 0px 6px 0px #31b0d5;
-  box-shadow: 0px 6px 0px #31b0d5;
-}
-.btn-info:hover {
-  border: 0;
-  background-color: #70c8e2 !important;
-  -webkit-box-shadow: 0px 4px 0px #31b0d5;
-  -moz-box-shadow: 0px 4px 0px #31b0d5;
-  box-shadow: 0px 4px 0px #31b0d5;
-}
-.btn-info:active {
-  -webkit-box-shadow: inset 0px 3px 0px #31b0d5;
-  -moz-box-shadow: inset 0px 3px 0px #31b0d5;
-  box-shadow: inset 0px 3px 0px #31b0d5;
-}
-.btn-warning {
-  border: 0;
-  text-shadow: 0px 1px 0px #ec971f;
-  background-color: #f0ad4e;
-  -webkit-box-shadow: 0px 6px 0px #ec971f;
-  -moz-box-shadow: 0px 6px 0px #ec971f;
-  box-shadow: 0px 6px 0px #ec971f;
-}
-.btn-warning:hover {
-  border: 0;
-  background-color: #f2b866 !important;
-  -webkit-box-shadow: 0px 4px 0px #ec971f;
-  -moz-box-shadow: 0px 4px 0px #ec971f;
-  box-shadow: 0px 4px 0px #ec971f;
-}
-.btn-warning:active {
-  -webkit-box-shadow: inset 0px 3px 0px #ec971f;
-  -moz-box-shadow: inset 0px 3px 0px #ec971f;
-  box-shadow: inset 0px 3px 0px #ec971f;
-}
-.btn-danger {
-  border: 0;
-  text-shadow: 0px 1px 0px #c9302c;
-  background-color: #d9534f;
-  -webkit-box-shadow: 0px 6px 0px #c9302c;
-  -moz-box-shadow: 0px 6px 0px #c9302c;
-  box-shadow: 0px 6px 0px #c9302c;
-}
-.btn-danger:hover {
-  border: 0;
-  background-color: #de6764 !important;
-  -webkit-box-shadow: 0px 4px 0px #c9302c;
-  -moz-box-shadow: 0px 4px 0px #c9302c;
-  box-shadow: 0px 4px 0px #c9302c;
-}
-.btn-danger:active {
-  -webkit-box-shadow: inset 0px 3px 0px #c9302c;
-  -moz-box-shadow: inset 0px 3px 0px #c9302c;
-  box-shadow: inset 0px 3px 0px #c9302c;
-}
-.btn-link {
-  text-shadow: none;
-  background: none !important;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-.btn-link:hover {
-  border: 0;
-  background: none !important;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  top: 0;
-}
-.btn-link:active {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  top: 0;
+.photo-input:hover::before {
+  color: #aaa;
 }
